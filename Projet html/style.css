@@ -1,0 +1,188 @@
+/* ==========================================================================
+   STYLE GLOBAL & INTERFACES (Valable pour toutes les fiches)
+   ========================================================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; padding: 40px 20px; color: #1c1e21; }
+.property-feed {display: flex; flex-wrap: wrap; gap: 20px; max-width: 1200px; margin: 0 auto; justify-content: center; }
+.property-card { background-color: #ffffff; border-radius: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 10px; overflow: hidden; position: relative; width: calc(33.333% - 14px); min-width: 280px; max-width: 380px; }
+input[type="radio"] { display: none; }
+
+.gallery-container { position: relative; width: 100%; aspect-ratio: 4 / 3; background-color: #eaeaea; }
+.main-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease-in-out; }
+
+.arrows-group { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; z-index: 10; }
+.nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; background-color: rgba(255, 255, 255, 0.92); border-radius: 50%; font-size: 15px; color: #111111; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); user-select: none; transition: background-color 0.2s, transform 0.2s; }
+.nav-arrow.prev { left: 16px; }
+.nav-arrow.next { right: 16px; }
+.nav-arrow:hover { background-color: #ffffff; transform: translateY(-50%) scale(1.05); }
+
+/* BARRE DE MINIATURES SANS SCROLLBAR */
+.thumbnails-container { display: block; overflow-x: auto; white-space: nowrap; padding: 6px 4px; background-color: #ffffff; scrollbar-width: none; -ms-overflow-style: none; }
+.thumbnails-container::-webkit-scrollbar { display: none; } /* Enlever la barre grise */
+.thumb { display: inline-block; width: 120px; aspect-ratio: 16 / 10; margin: 0 3px; border-radius: 2px; cursor: pointer; overflow: hidden; background-color: #f5f5f5; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.card-body { padding: 20px 24px; }
+.price-row { display: block; margin-bottom: 12px; overflow: hidden; }
+.price { font-size: 30px; font-weight: 700; color: #0c2340; float: left; line-height: 1; }
+.badge { background-color: #0c1523; color: #ffffff; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 3px; float: right; margin-top: 4px; }
+.property-title { font-size: 15px; color: #4a5568; clear: both; margin-bottom: 24px; }
+.specs-grid { display: block; overflow: hidden; }
+.spec-item { width: 50%; float: left; margin-bottom: 16px; font-size: 15px; color: #4a5568; }
+.spec-item .icon { display: inline-block; width: 28px; font-size: 16px; vertical-align: middle; }
+.spec-item .text { display: inline-block; vertical-align: middle; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHE 1 (10 Photos)
+   ========================================================================== */
+#photo-1:checked ~ .gallery-container .img1, #photo-2:checked ~ .gallery-container .img2, #photo-3:checked ~ .gallery-container .img3, #photo-4:checked ~ .gallery-container .img4, #photo-5:checked ~ .gallery-container .img5, #photo-6:checked ~ .gallery-container .img6, #photo-7:checked ~ .gallery-container .img7, #photo-8:checked ~ .gallery-container .img8, #photo-9:checked ~ .gallery-container .img9, #photo-10:checked ~ .gallery-container .img10 { opacity: 1; z-index: 2; }
+#photo-1:checked ~ .gallery-container .arrow-grp1, #photo-2:checked ~ .gallery-container .arrow-grp2, #photo-3:checked ~ .gallery-container .arrow-grp3, #photo-4:checked ~ .gallery-container .arrow-grp4, #photo-5:checked ~ .gallery-container .arrow-grp5, #photo-6:checked ~ .gallery-container .arrow-grp6, #photo-7:checked ~ .gallery-container .arrow-grp7, #photo-8:checked ~ .gallery-container .arrow-grp8, #photo-9:checked ~ .gallery-container .arrow-grp9, #photo-10:checked ~ .gallery-container .arrow-grp10 { display: block; }
+#photo-1:checked ~ .thumbnails-container .label1, #photo-2:checked ~ .thumbnails-container .label2, #photo-3:checked ~ .thumbnails-container .label3, #photo-4:checked ~ .thumbnails-container .label4, #photo-5:checked ~ .thumbnails-container .label5, #photo-6:checked ~ .thumbnails-container .label6, #photo-7:checked ~ .thumbnails-container .label7, #photo-8:checked ~ .thumbnails-container .label8, #photo-9:checked ~ .thumbnails-container .label9, #photo-10:checked ~ .thumbnails-container .label10 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHE 2 (9 Photos)
+   ========================================================================== */
+#f2-photo-1:checked ~ .gallery-container .img1, #f2-photo-2:checked ~ .gallery-container .img2, #f2-photo-3:checked ~ .gallery-container .img3, #f2-photo-4:checked ~ .gallery-container .img4, #f2-photo-5:checked ~ .gallery-container .img5, #f2-photo-6:checked ~ .gallery-container .img6, #f2-photo-7:checked ~ .gallery-container .img7, #f2-photo-8:checked ~ .gallery-container .img8, #f2-photo-9:checked ~ .gallery-container .img9 { opacity: 1; z-index: 2; }
+#f2-photo-1:checked ~ .gallery-container .arrow-grp1, #f2-photo-2:checked ~ .gallery-container .arrow-grp2, #f2-photo-3:checked ~ .gallery-container .arrow-grp3, #f2-photo-4:checked ~ .gallery-container .arrow-grp4, #f2-photo-5:checked ~ .gallery-container .arrow-grp5, #f2-photo-6:checked ~ .gallery-container .arrow-grp6, #f2-photo-7:checked ~ .gallery-container .arrow-grp7, #f2-photo-8:checked ~ .gallery-container .arrow-grp8, #f2-photo-9:checked ~ .gallery-container .arrow-grp9 { display: block; }
+#f2-photo-1:checked ~ .thumbnails-container .label1, #f2-photo-2:checked ~ .thumbnails-container .label2, #f2-photo-3:checked ~ .thumbnails-container .label3, #f2-photo-4:checked ~ .thumbnails-container .label4, #f2-photo-5:checked ~ .thumbnails-container .label5, #f2-photo-6:checked ~ .thumbnails-container .label6, #f2-photo-7:checked ~ .thumbnails-container .label7, #f2-photo-8:checked ~ .thumbnails-container .label8, #f2-photo-9:checked ~ .thumbnails-container .label9 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHE 3 (8 Photos)
+   ========================================================================== */
+#f3-photo-1:checked ~ .gallery-container .img1, #f3-photo-2:checked ~ .gallery-container .img2, #f3-photo-3:checked ~ .gallery-container .img3, #f3-photo-4:checked ~ .gallery-container .img4, #f3-photo-5:checked ~ .gallery-container .img5, #f3-photo-6:checked ~ .gallery-container .img6, #f3-photo-7:checked ~ .gallery-container .img7, #f3-photo-8:checked ~ .gallery-container .img8 { opacity: 1; z-index: 2; }
+#f3-photo-1:checked ~ .gallery-container .arrow-grp1, #f3-photo-2:checked ~ .gallery-container .arrow-grp2, #f3-photo-3:checked ~ .gallery-container .arrow-grp3, #f3-photo-4:checked ~ .gallery-container .arrow-grp4, #f3-photo-5:checked ~ .gallery-container .arrow-grp5, #f3-photo-6:checked ~ .gallery-container .arrow-grp6, #f3-photo-7:checked ~ .gallery-container .arrow-grp7, #f3-photo-8:checked ~ .gallery-container .arrow-grp8 { display: block; }
+#f3-photo-1:checked ~ .thumbnails-container .label1, #f3-photo-2:checked ~ .thumbnails-container .label2, #f3-photo-3:checked ~ .thumbnails-container .label3, #f3-photo-4:checked ~ .thumbnails-container .label4, #f3-photo-5:checked ~ .thumbnails-container .label5, #f3-photo-6:checked ~ .thumbnails-container .label6, #f3-photo-7:checked ~ .thumbnails-container .label7, #f3-photo-8:checked ~ .thumbnails-container .label8 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHE 4 (8 Photos)
+   ========================================================================== */
+#f4-photo-1:checked ~ .gallery-container .img1, #f4-photo-2:checked ~ .gallery-container .img2, #f4-photo-3:checked ~ .gallery-container .img3, #f4-photo-4:checked ~ .gallery-container .img4, #f4-photo-5:checked ~ .gallery-container .img5, #f4-photo-6:checked ~ .gallery-container .img6, #f4-photo-7:checked ~ .gallery-container .img7, #f4-photo-8:checked ~ .gallery-container .img8 { opacity: 1; z-index: 2; }
+#f4-photo-1:checked ~ .gallery-container .arrow-grp1, #f4-photo-2:checked ~ .gallery-container .arrow-grp2, #f4-photo-3:checked ~ .gallery-container .arrow-grp3, #f4-photo-4:checked ~ .gallery-container .arrow-grp4, #f4-photo-5:checked ~ .gallery-container .arrow-grp5, #f4-photo-6:checked ~ .gallery-container .arrow-grp6, #f4-photo-7:checked ~ .gallery-container .arrow-grp7, #f4-photo-8:checked ~ .gallery-container .arrow-grp8 { display: block; }
+#f4-photo-1:checked ~ .thumbnails-container .label1, #f4-photo-2:checked ~ .thumbnails-container .label2, #f4-photo-3:checked ~ .thumbnails-container .label3, #f4-photo-4:checked ~ .thumbnails-container .label4, #f4-photo-5:checked ~ .thumbnails-container .label5, #f4-photo-6:checked ~ .thumbnails-container .label6, #f4-photo-7:checked ~ .thumbnails-container .label7, #f4-photo-8:checked ~ .thumbnails-container .label8 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHE 5 (7 Photos)
+   ========================================================================== */
+#f5-photo-1:checked ~ .gallery-container .img1, #f5-photo-2:checked ~ .gallery-container .img2, #f5-photo-3:checked ~ .gallery-container .img3, #f5-photo-4:checked ~ .gallery-container .img4, #f5-photo-5:checked ~ .gallery-container .img5, #f5-photo-6:checked ~ .gallery-container .img6, #f5-photo-7:checked ~ .gallery-container .img7 { opacity: 1; z-index: 2; }
+#f5-photo-1:checked ~ .gallery-container .arrow-grp1, #f5-photo-2:checked ~ .gallery-container .arrow-grp2, #f5-photo-3:checked ~ .gallery-container .arrow-grp3, #f5-photo-4:checked ~ .gallery-container .arrow-grp4, #f5-photo-5:checked ~ .gallery-container .arrow-grp5, #f5-photo-6:checked ~ .gallery-container .arrow-grp6, #f5-photo-7:checked ~ .gallery-container .arrow-grp7 { display: block; }
+#f5-photo-1:checked ~ .thumbnails-container .label1, #f5-photo-2:checked ~ .thumbnails-container .label2, #f5-photo-3:checked ~ .thumbnails-container .label3, #f5-photo-4:checked ~ .thumbnails-container .label4, #f5-photo-5:checked ~ .thumbnails-container .label5, #f5-photo-6:checked ~ .thumbnails-container .label6, #f5-photo-7:checked ~ .thumbnails-container .label7 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHE 6 (7 Photos)
+   ========================================================================== */
+#f6-photo-1:checked ~ .gallery-container .img1, #f6-photo-2:checked ~ .gallery-container .img2, #f6-photo-3:checked ~ .gallery-container .img3, #f6-photo-4:checked ~ .gallery-container .img4, #f6-photo-5:checked ~ .gallery-container .img5, #f6-photo-6:checked ~ .gallery-container .img6, #f6-photo-7:checked ~ .gallery-container .img7 { opacity: 1; z-index: 2; }
+#f6-photo-1:checked ~ .gallery-container .arrow-grp1, #f6-photo-2:checked ~ .gallery-container .arrow-grp2, #f6-photo-3:checked ~ .gallery-container .arrow-grp3, #f6-photo-4:checked ~ .gallery-container .arrow-grp4, #f6-photo-5:checked ~ .gallery-container .arrow-grp5, #f6-photo-6:checked ~ .gallery-container .arrow-grp6, #f6-photo-7:checked ~ .gallery-container .arrow-grp7 { display: block; }
+#f6-photo-1:checked ~ .thumbnails-container .label1, #f6-photo-2:checked ~ .thumbnails-container .label2, #f6-photo-3:checked ~ .thumbnails-container .label3, #f6-photo-4:checked ~ .thumbnails-container .label4, #f6-photo-5:checked ~ .thumbnails-container .label5, #f6-photo-6:checked ~ .thumbnails-container .label6, #f6-photo-7:checked ~ .thumbnails-container .label7 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHE 7 (6 Photos)
+   ========================================================================== */
+#f7-photo-1:checked ~ .gallery-container .img1, #f7-photo-2:checked ~ .gallery-container .img2, #f7-photo-3:checked ~ .gallery-container .img3, #f7-photo-4:checked ~ .gallery-container .img4, #f7-photo-5:checked ~ .gallery-container .img5, #f7-photo-6:checked ~ .gallery-container .img6 { opacity: 1; z-index: 2; }
+#f7-photo-1:checked ~ .gallery-container .arrow-grp1, #f7-photo-2:checked ~ .gallery-container .arrow-grp2, #f7-photo-3:checked ~ .gallery-container .arrow-grp3, #f7-photo-4:checked ~ .gallery-container .arrow-grp4, #f7-photo-5:checked ~ .gallery-container .arrow-grp5, #f7-photo-6:checked ~ .gallery-container .arrow-grp6 { display: block; }
+#f7-photo-1:checked ~ .thumbnails-container .label1, #f7-photo-2:checked ~ .thumbnails-container .label2, #f7-photo-3:checked ~ .thumbnails-container .label3, #f7-photo-4:checked ~ .thumbnails-container .label4, #f7-photo-5:checked ~ .thumbnails-container .label5, #f7-photo-6:checked ~ .thumbnails-container .label6 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHE 8 (6 Photos)
+   ========================================================================== */
+#f8-photo-1:checked ~ .gallery-container .img1, #f8-photo-2:checked ~ .gallery-container .img2, #f8-photo-3:checked ~ .gallery-container .img3, #f8-photo-4:checked ~ .gallery-container .img4, #f8-photo-5:checked ~ .gallery-container .img5, #f8-photo-6:checked ~ .gallery-container .img6 { opacity: 1; z-index: 2; }
+#f8-photo-1:checked ~ .gallery-container .arrow-grp1, #f8-photo-2:checked ~ .gallery-container .arrow-grp2, #f8-photo-3:checked ~ .gallery-container .arrow-grp3, #f8-photo-4:checked ~ .gallery-container .arrow-grp4, #f8-photo-5:checked ~ .gallery-container .arrow-grp5, #f8-photo-6:checked ~ .gallery-container .arrow-grp6 { display: block; }
+#f8-photo-1:checked ~ .thumbnails-container .label1, #f8-photo-2:checked ~ .thumbnails-container .label2, #f8-photo-3:checked ~ .thumbnails-container .label3, #f8-photo-4:checked ~ .thumbnails-container .label4, #f8-photo-5:checked ~ .thumbnails-container .label5, #f8-photo-6:checked ~ .thumbnails-container .label6 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHE 9 (6 Photos)
+   ========================================================================== */
+#f9-photo-1:checked ~ .gallery-container .img1, #f9-photo-2:checked ~ .gallery-container .img2, #f9-photo-3:checked ~ .gallery-container .img3, #f9-photo-4:checked ~ .gallery-container .img4, #f9-photo-5:checked ~ .gallery-container .img5, #f9-photo-6:checked ~ .gallery-container .img6 { opacity: 1; z-index: 2; }
+#f9-photo-1:checked ~ .gallery-container .arrow-grp1, #f9-photo-2:checked ~ .gallery-container .arrow-grp2, #f9-photo-3:checked ~ .gallery-container .arrow-grp3, #f9-photo-4:checked ~ .gallery-container .arrow-grp4, #f9-photo-5:checked ~ .gallery-container .arrow-grp5, #f9-photo-6:checked ~ .gallery-container .arrow-grp6 { display: block; }
+#f9-photo-1:checked ~ .thumbnails-container .label1, #f9-photo-2:checked ~ .thumbnails-container .label2, #f9-photo-3:checked ~ .thumbnails-container .label3, #f9-photo-4:checked ~ .thumbnails-container .label4, #f9-photo-5:checked ~ .thumbnails-container .label5, #f9-photo-6:checked ~ .thumbnails-container .label6 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHES 10 À 14 (5 Photos chacune)
+   ========================================================================== */
+/* FICHE 10 */
+#f10-photo-1:checked ~ .gallery-container .img1, #f10-photo-2:checked ~ .gallery-container .img2, #f10-photo-3:checked ~ .gallery-container .img3, #f10-photo-4:checked ~ .gallery-container .img4, #f10-photo-5:checked ~ .gallery-container .img5 { opacity: 1; z-index: 2; }
+#f10-photo-1:checked ~ .gallery-container .arrow-grp1, #f10-photo-2:checked ~ .gallery-container .arrow-grp2, #f10-photo-3:checked ~ .gallery-container .arrow-grp3, #f10-photo-4:checked ~ .gallery-container .arrow-grp4, #f10-photo-5:checked ~ .gallery-container .arrow-grp5 { display: block; }
+#f10-photo-1:checked ~ .thumbnails-container .label1, #f10-photo-2:checked ~ .thumbnails-container .label2, #f10-photo-3:checked ~ .thumbnails-container .label3, #f10-photo-4:checked ~ .thumbnails-container .label4, #f10-photo-5:checked ~ .thumbnails-container .label5 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* FICHE 11 */
+#f11-photo-1:checked ~ .gallery-container .img1, #f11-photo-2:checked ~ .gallery-container .img2, #f11-photo-3:checked ~ .gallery-container .img3, #f11-photo-4:checked ~ .gallery-container .img4, #f11-photo-5:checked ~ .gallery-container .img5 { opacity: 1; z-index: 2; }
+#f11-photo-1:checked ~ .gallery-container .arrow-grp1, #f11-photo-2:checked ~ .gallery-container .arrow-grp2, #f11-photo-3:checked ~ .gallery-container .arrow-grp3, #f11-photo-4:checked ~ .gallery-container .arrow-grp4, #f11-photo-5:checked ~ .gallery-container .arrow-grp5 { display: block; }
+#f11-photo-1:checked ~ .thumbnails-container .label1, #f11-photo-2:checked ~ .thumbnails-container .label2, #f11-photo-3:checked ~ .thumbnails-container .label3, #f11-photo-4:checked ~ .thumbnails-container .label4, #f11-photo-5:checked ~ .thumbnails-container .label5 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* FICHE 12 */
+#f12-photo-1:checked ~ .gallery-container .img1, #f12-photo-2:checked ~ .gallery-container .img2, #f12-photo-3:checked ~ .gallery-container .img3, #f12-photo-4:checked ~ .gallery-container .img4, #f12-photo-5:checked ~ .gallery-container .img5 { opacity: 1; z-index: 2; }
+#f12-photo-1:checked ~ .gallery-container .arrow-grp1, #f12-photo-2:checked ~ .gallery-container .arrow-grp2, #f12-photo-3:checked ~ .gallery-container .arrow-grp3, #f12-photo-4:checked ~ .gallery-container .arrow-grp4, #f12-photo-5:checked ~ .gallery-container .arrow-grp5 { display: block; }
+#f12-photo-1:checked ~ .thumbnails-container .label1, #f12-photo-2:checked ~ .thumbnails-container .label2, #f12-photo-3:checked ~ .thumbnails-container .label3, #f12-photo-4:checked ~ .thumbnails-container .label4, #f12-photo-5:checked ~ .thumbnails-container .label5 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* FICHE 13 */
+#f13-photo-1:checked ~ .gallery-container .img1, #f13-photo-2:checked ~ .gallery-container .img2, #f13-photo-3:checked ~ .gallery-container .img3, #f13-photo-4:checked ~ .gallery-container .img4, #f13-photo-5:checked ~ .gallery-container .img5 { opacity: 1; z-index: 2; }
+#f13-photo-1:checked ~ .gallery-container .arrow-grp1, #f13-photo-2:checked ~ .gallery-container .arrow-grp2, #f13-photo-3:checked ~ .gallery-container .arrow-grp3, #f13-photo-4:checked ~ .gallery-container .arrow-grp4, #f13-photo-5:checked ~ .gallery-container .arrow-grp5 { display: block; }
+#f13-photo-1:checked ~ .thumbnails-container .label1, #f13-photo-2:checked ~ .thumbnails-container .label2, #f13-photo-3:checked ~ .thumbnails-container .label3, #f13-photo-4:checked ~ .thumbnails-container .label4, #f13-photo-5:checked ~ .thumbnails-container .label5 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* FICHE 14 */
+#f14-photo-1:checked ~ .gallery-container .img1, #f14-photo-2:checked ~ .gallery-container .img2, #f14-photo-3:checked ~ .gallery-container .img3, #f14-photo-4:checked ~ .gallery-container .img4, #f14-photo-5:checked ~ .gallery-container .img5 { opacity: 1; z-index: 2; }
+#f14-photo-1:checked ~ .gallery-container .arrow-grp1, #f14-photo-2:checked ~ .gallery-container .arrow-grp2, #f14-photo-3:checked ~ .gallery-container .arrow-grp3, #f14-photo-4:checked ~ .gallery-container .arrow-grp4, #f14-photo-5:checked ~ .gallery-container .arrow-grp5 { display: block; }
+#f14-photo-1:checked ~ .thumbnails-container .label1, #f14-photo-2:checked ~ .thumbnails-container .label2, #f14-photo-3:checked ~ .thumbnails-container .label3, #f14-photo-4:checked ~ .thumbnails-container .label4, #f14-photo-5:checked ~ .thumbnails-container .label5 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHES 15 ET 16 (4 Photos chacune)
+   ========================================================================== */
+/* FICHE 15 */
+#f15-photo-1:checked ~ .gallery-container .img1, #f15-photo-2:checked ~ .gallery-container .img2, #f15-photo-3:checked ~ .gallery-container .img3, #f15-photo-4:checked ~ .gallery-container .img4 { opacity: 1; z-index: 2; }
+#f15-photo-1:checked ~ .gallery-container .arrow-grp1, #f15-photo-2:checked ~ .gallery-container .arrow-grp2, #f15-photo-3:checked ~ .gallery-container .arrow-grp3, #f15-photo-4:checked ~ .gallery-container .arrow-grp4 { display: block; }
+#f15-photo-1:checked ~ .thumbnails-container .label1, #f15-photo-2:checked ~ .thumbnails-container .label2, #f15-photo-3:checked ~ .thumbnails-container .label3, #f15-photo-4:checked ~ .thumbnails-container .label4 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* FICHE 16 */
+#f16-photo-1:checked ~ .gallery-container .img1, #f16-photo-2:checked ~ .gallery-container .img2, #f16-photo-3:checked ~ .gallery-container .img3, #f16-photo-4:checked ~ .gallery-container .img4 { opacity: 1; z-index: 2; }
+#f16-photo-1:checked ~ .gallery-container .arrow-grp1, #f16-photo-2:checked ~ .gallery-container .arrow-grp2, #f16-photo-3:checked ~ .gallery-container .arrow-grp3, #f16-photo-4:checked ~ .gallery-container .arrow-grp4 { display: block; }
+#f16-photo-1:checked ~ .thumbnails-container .label1, #f16-photo-2:checked ~ .thumbnails-container .label2, #f16-photo-3:checked ~ .thumbnails-container .label3, #f16-photo-4:checked ~ .thumbnails-container .label4 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* ==========================================================================
+   LOGIQUE INTERACTIVE FICHES 17 À 21 (2 Photos chacune)
+   ========================================================================== */
+/* FICHE 17 */
+#f17-photo-1:checked ~ .gallery-container .img1, #f17-photo-2:checked ~ .gallery-container .img2 { opacity: 1; z-index: 2; }
+#f17-photo-1:checked ~ .gallery-container .arrow-grp1, #f17-photo-2:checked ~ .gallery-container .arrow-grp2 { display: block; }
+#f17-photo-1:checked ~ .thumbnails-container .label1, #f17-photo-2:checked ~ .thumbnails-container .label2 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* FICHE 18 */
+#f18-photo-1:checked ~ .gallery-container .img1, #f18-photo-2:checked ~ .gallery-container .img2 { opacity: 1; z-index: 2; }
+#f18-photo-1:checked ~ .gallery-container .arrow-grp1, #f18-photo-2:checked ~ .gallery-container .arrow-grp2 { display: block; }
+#f18-photo-1:checked ~ .thumbnails-container .label1, #f18-photo-2:checked ~ .thumbnails-container .label2 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* FICHE 19 */
+#f19-photo-1:checked ~ .gallery-container .img1, #f19-photo-2:checked ~ .gallery-container .img2 { opacity: 1; z-index: 2; }
+#f19-photo-1:checked ~ .gallery-container .arrow-grp1, #f19-photo-2:checked ~ .gallery-container .arrow-grp2 { display: block; }
+#f19-photo-1:checked ~ .thumbnails-container .label1, #f19-photo-2:checked ~ .thumbnails-container .label2 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* FICHE 20 */
+#f20-photo-1:checked ~ .gallery-container .img1, #f20-photo-2:checked ~ .gallery-container .img2 { opacity: 1; z-index: 2; }
+#f20-photo-1:checked ~ .gallery-container .arrow-grp1, #f20-photo-2:checked ~ .gallery-container .arrow-grp2 { display: block; }
+#f20-photo-1:checked ~ .thumbnails-container .label1, #f20-photo-2:checked ~ .thumbnails-container .label2 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; }
+
+/* FICHE 21 */
+#f21-photo-1:checked ~ .gallery-container .img1, #f21-photo-2:checked ~ .gallery-container .img2 { opacity: 1; z-index: 2; }
+#f21-photo-1:checked ~ .gallery-container .arrow-grp1, #f21-photo-2:checked ~ .gallery-container .arrow-grp2 { display: block; }
+#f21-photo-1:checked ~ .thumbnails-container .label1, #f21-photo-2:checked ~ .thumbnails-container .label2 { outline: 2.5px solid #0056b3; outline-offset: -2.5px; } 
+
+
+/* ==========================================================================
+   FORÇAGE DES MINIATURES À 50% POUR LES FICHES À 2 PHOTOS
+   ========================================================================== */
+.thumbnails-container.two-photos {
+    display: flex !important;
+    gap: 10px !important;       /* Un petit espace propre entre les deux */
+    width: 100% !important;
+}
+
+.thumbnails-container.two-photos .thumb {
+    flex: 1 1 50% !important;   /* Force chaque miniature à prendre la moitié du vide */
+    width: 50% !important;      /* Écrase l'ancienne largeur fixe */
+    height: 75px !important;    /* Force une hauteur plus grande pour remplir le vide */
+    max-width: 100% !important;
+}
+
+.thumbnails-container.two-photos .thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Évite que l'image soit déformée en grandissant */
+}

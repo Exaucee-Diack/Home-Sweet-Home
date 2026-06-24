@@ -743,3 +743,129 @@ input[type="radio"] { display: none; }
     color: rgba(255,255,255,0.25);
     letter-spacing: 0.5px;
 }
+
+
+/* ==========================================================================
+   RESPONSIVE — Mobile & Tablette
+   ========================================================================== */
+
+/* TABLETTE — max 1024px */
+@media (max-width: 1024px) {
+    .navbar { padding: 20px 30px; }
+    .nav-logo { left: 30px; }
+    .nav-links { gap: 28px; }
+    .hero-content { padding: 20px 30px 160px; }
+    .search-bar { flex-wrap: wrap; gap: 10px; padding: 18px 20px; }
+    .search-field { flex: 1 1 auto; min-width: 120px; padding: 0 12px; }
+    .search-divider { display: none; }
+    .search-btn { width: 100%; margin-left: 0; margin-top: 8px; }
+    .stats-band { padding: 40px 30px; gap: 10px; }
+    .property-card { width: calc(50% - 10px); }
+    .contact-section { padding: 70px 40px; }
+    .contact-container { gap: 50px; }
+    .contact-left { flex: 0 0 280px; }
+}
+
+/* MOBILE — max 768px */
+@media (max-width: 768px) {
+
+    /* CORRECTION PRINCIPALE : navbar ne casse plus la mise en page */
+    .navbar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 20px;
+        gap: 12px;
+        width: 100%;
+    }
+    .nav-logo {
+        position: static;
+        transform: none;
+        left: auto;
+    }
+    .logo-img { height: 70px; }
+    .nav-links {
+        margin-left: 0;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links a { font-size: 12px; letter-spacing: 1.5px; }
+
+    /* HERO */
+    .hero-content { padding: 20px 20px 200px; }
+    .hero-title { font-size: 2.5rem !important; }
+    .hero-tagline { font-size: 16px !important; }
+    .team-name { font-size: 12px; }
+    .hero-btn { padding: 14px 32px; font-size: 11px; }
+
+    /* SEARCH BAR */
+    .search-bar-wrap { padding: 0 12px; }
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        gap: 12px;
+        border-radius: 14px 14px 0 0;
+    }
+    .search-field { padding: 0; }
+    .search-btn { margin-left: 0; margin-top: 0; width: 100%; }
+
+    /* STATS */
+    .stats-band {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 36px 20px;
+        gap: 24px;
+    }
+    .stat-divider { display: none; }
+    .stat-number { font-size: 30px; }
+
+    /* CARTES */
+    .properties-section { padding: 70px 16px 40px; }
+    .property-card { width: 100%; max-width: 100%; min-width: unset; }
+    .property-feed { gap: 16px; }
+
+    /* CONTACT */
+    .contact-section { padding: 60px 20px; }
+    .contact-container { flex-direction: column; gap: 40px; }
+    .contact-left { flex: none; width: 100%; }
+    .form-row { flex-direction: column; gap: 20px; }
+    .submit-btn { align-self: stretch; text-align: center; }
+
+    /* FOOTER */
+    .footer { padding: 24px 16px; font-size: 11px; }
+}
+
+/* PETIT MOBILE — max 480px */
+@media (max-width: 480px) {
+
+    .navbar { padding: 14px 16px; }
+    .logo-img { height: 55px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 11px; letter-spacing: 1px; }
+
+    .hero-content { padding: 16px 16px 220px; }
+    .hero-title { font-size: 1.9rem !important; }
+    .hero-label { font-size: 10px; letter-spacing: 2px; }
+    .team-name { font-size: 11px; }
+
+    .search-bar { padding: 14px 12px; gap: 10px; }
+    .search-field label { font-size: 9px; }
+    .search-field input, .search-field select { font-size: 13px; }
+
+    .stats-band { grid-template-columns: 1fr; padding: 30px 16px; gap: 20px; }
+    .stat-number { font-size: 26px; }
+    .stat-label { font-size: 9px; letter-spacing: 2px; }
+
+    .properties-section { padding: 50px 12px 30px; }
+    .filter-pill { padding: 8px 16px; font-size: 12px; }
+    .thumbnails-container.two-photos .thumb { height: 60px !important; }
+
+    .contact-section { padding: 50px 16px; }
+    .contact-title { font-size: 26px !important; }
+    .contact-desc { font-size: 14px; }
+    .form-group input, .form-group textarea { font-size: 14px; padding: 12px 14px; }
+    .submit-btn { font-size: 14px; padding: 14px 32px; }
+}
